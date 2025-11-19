@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca - Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <h1>Minha Biblioteca</h1>
+    <nav>
+        <a href="index.html">Sair</a>
+    </nav>
+</header>
+
+<section class="dashboard">
+
+    <div class="search-box">
+        <input type="text" id="pesquisa" placeholder="Pesquisar livro...">
+        <button onclick="pesquisarLivro()">Buscar</button>
+    </div>
+
+    <h2>Adicionar novo livro</h2>
+
+    <form id="formLivro" class="add-livro">
+        <label>Título:</label>
+        <input type="text" id="titulo" required>
+
+        <label>Autor:</label>
+        <input type="text" id="autor" required>
+
+        <label>Arquivo (PDF ou EPUB):</label>
+        <input type="file" id="arquivo" accept=".pdf,.epub" required>
+
+        <button type="submit">Adicionar</button>
+    </form>
+
+    <hr>
+
+    <h2>Livros cadastrados</h2>
+    <div id="listaLivros" class="lista-livros"></div>
+
+</section>
+
+<script src="js/script.js"></script>
+</body>
+</html>
