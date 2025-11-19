@@ -137,7 +137,7 @@ body.dark-bg {
 
 @media (max-width: 768px) {
     body.dark-bg {
-        background-image: url('/assents/img/fundo2.png');
+        background-image: url('../assets/img/fundo2.png');
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
