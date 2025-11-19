@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
 
-<div class="form-container">
-    <h2>Entrar</h2>
+<body class="dark-bg">
 
-    <form id="loginForm">
-        <label>Email:</label>
-        <input type="email" required>
+    <div class="center-box glass form-box">
+        <h2 class="title">Login</h2>
 
-        <label>Senha:</label>
-        <input type="password" required>
+        <form id="loginForm">
+            <label>Email</label>
+            <input type="email" class="input-dark" required>
 
-        <button type="submit" class="btn">Entrar</button>
-    </form>
+            <label>Senha</label>
+            <input type="password" class="input-dark" required>
 
-    <p>Não tem conta? <a href="cadastro.html">Cadastre-se</a></p>
-</div>
+            <button type="submit" class="btn-primary full">Acessar</button>
+        </form>
 
-<script src="js/script.js"></script>
+        <p class="switch">Não tem conta? <a href="cadastro.html">Cadastrar</a></p>
+    </div>
+
+    <script src="js/script.js"></script>
 </body>
+
 </html>
