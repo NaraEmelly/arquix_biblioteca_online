@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="BookFlix - Sua biblioteca digital de livros. Explore, empreste e leia milhares de títulos." />
+    <meta name="theme-color" content="#e50914" />
+    <title>Arquix - Sua Biblioteca Digital</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+    <!-- ===== SEÇÃO DE AUTENTICAÇÃO - LOGIN ===== -->
+    <section id="telaLogin" class="container-auth">
+        <div class="caixa-auth">
+            <h2>Bem-vindo à Arquix</h2>
+            <div id="erroLogin" class="msg-erro escondido"></div>
+
+            <form id="formLogin">
+                <div class="grupo-form">
+                    <label for="emailLogin">Email</label>
+                    <input 
+                        type="email" 
+                        id="emailLogin" 
+                        placeholder="seu@email.com" 
+                        required 
+                        autocomplete="username"
+                    >
+                </div>
+                <div class="grupo-form">
+                    <label for="senhaLogin">Senha</label>
+                    <input 
+                        type="password" 
+                        id="senhaLogin" 
+                        placeholder="••••••••" 
+                        required 
+                        autocomplete="current-password"
+                    >
+                </div>
+                <button class="botao" type="submit">Entrar</button>
+                <small style="display: block; margin-top: 12px; color: #888; font-size: 12px; text-align: center;">
+                    Demo: admin@Arquix.com
+                </small>
+            </form>
+            <div class="texto-link">
+                Novo por aqui? <a href="#" id="linkCadastro">Criar conta</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SEÇÃO DE AUTENTICAÇÃO - CADASTRO ===== -->
+    <section id="telaCadastro" class="container-auth escondido">
+        <div class="caixa-auth">
+            <h2>Criar Conta</h2>
+            <div id="erroCadastro" class="msg-erro escondido"></div>
+
+            <form id="formCadastro">
+                <div class="grupo-form">
+                    <label for="nomeCadastro">Nome Completo</label>
+                    <input 
+                        type="text" 
+                        id="nomeCadastro" 
+                        placeholder="Seu nome completo" 
+                        required
+                    >
+                </div>
+                <div class="grupo-form">
+                    <label for="emailCadastro">Email</label>
+                    <input 
+                        type="email" 
+                        id="emailCadastro" 
+                        placeholder="seu@email.com" 
+                        required 
+                        autocomplete="email"
+                    >
+                </div>
+                <div class="grupo-form">
+                    <label for="senhaCadastro">Senha</label>
+                    <input 
+                        type="password" 
+                        id="senhaCadastro" 
+                        placeholder="Mínimo 6 caracteres" 
+                        required 
+                        minlength="6" 
+                        autocomplete="new-password"
+                    >
+                </div>
+                <button class="botao" type="submit">Criar Conta</button>
+            </form>
+            <div class="texto-link">
+                Já tem conta? <a href="#" id="linkLogin">Faça login</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SEÇÃO PRINCIPAL - BIBLIOTECA ===== -->
+    <section id="telaBiblioteca" class="escondido">
+        <nav class="navbar">
+            <div style="display: flex; align-items: center;">
+                <span class="logo">📚 Arquix</span>
+            </div>
+            <div class="controles-usuario">
+                <div class="barra-busca">
+                    <input 
+                        id="campoBusca" 
+                        type="text"
+                        placeholder="Buscar títulos, autores..." 
+                        aria-label="Buscar livros"
+                    />
+                </div>
+                <span id="nomeUsuarioDisplay" title="Usuário logado">Usuário</span>
+                
+                <button 
+                    class="botao-sair escondido" 
+                    id="botaoAdmin" 
+                    title="Acessar painel administrativo"
+                >
+                    ⚙️ Admin
+                </button>
+                <button 
+                    class="botao-sair" 
+                    id="botaoSair"
+                    title="Fazer logout"
+                >
+                    Sair
+                </button>
+            </div>
+        </nav>
+
+        <!-- Conteúdo Principal -->
+        <main class="visualizacao-principal">
+            <div 
+                id="bannerPrincipal" 
+                class="banner-hero" 
+                style="background-image: url('https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80');"
+            >
+                <h1 class="titulo-hero">O Mundo da Leitura</h1>
+                <p class="desc-hero">Explore milhares de livros, dos clássicos aos contemporâneos. Encontre suas próximas leituras favoritas.</p>
+            </div>
+
+            <div id="containerLinhas">
+                <div id="carregando" class="loading escondido">Carregando catálogo...</div>
+            </div>
+        </main>
+    </section>
+
+    <section id="telaAdmin" class="escondido container-auth" style="display: none; background: #0f0f0f;">
+        <div style="max-width: 1000px; margin: 0 auto; padding: 40px 24px; width: 100%;">
+            
+            <!-- Botão Voltar -->
+            <button id="botaoVoltarLib" class="botao" style="width: auto; margin-bottom: 30px;">
+                ← Voltar para Biblioteca
+            </button>
+
+            <!-- Formulário de Adicionar Livro -->
+            <div class="caixa-auth" style="max-width: 100%; margin-bottom: 40px;">
+                <h2>Adicionar Novo Livro</h2>
+                <form id="formAddLivro">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="grupo-form">
+                            <label for="novoTitulo">Título do Livro</label>
+                            <input 
+                                type="text" 
+                                id="novoTitulo" 
+                                placeholder="Digite o título" 
+                                required 
+                                style="margin: 0;"
+                            >
+                        </div>
+                        <div class="grupo-form">
+                            <label for="novoAutor">Autor</label>
+                            <input 
+                                type="text" 
+                                id="novoAutor" 
+                                placeholder="Nome do autor" 
+                                required 
+                                style="margin: 0;"
+                            >
+                        </div>
+                        <div class="grupo-form">
+                            <label for="novaCategoria">Categoria</label>
+                            <input 
+                                type="text" 
+                                id="novaCategoria" 
+                                placeholder="Ex: Tecnologia, Ficção..." 
+                                required 
+                                style="margin: 0;"
+                            >
+                        </div>
+                        <div class="grupo-form">
+                            <label for="novaCapa">URL da Capa (Imagem)</label>
+                            <input 
+                                type="url" 
+                                id="novaCapa" 
+                                placeholder="https://exemplo.com/imagem.jpg" 
+                                style="margin: 0;"
+                            >
+                        </div>
+                    </div>
+                    <button class="botao" type="submit" style="margin-top: 20px; width: auto; padding: 12px 32px;">
+                        ✓ Salvar Livro
+                    </button>
+                </form>
+            </div>
+
+            <!-- Relatório de Empréstimos -->
+            <div class="caixa-auth" style="max-width: 100%;">
+                <h2>Relatório de Empréstimos</h2>
+                <div style="overflow-x: auto; border-radius: 8px; border: 1px solid #333;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Livro</th>
+                                <th>Usuário</th>
+                                <th>Retirada</th>
+                                <th>Devolução</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="corpoTabelaEmprestimos">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

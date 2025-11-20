@@ -1,0 +1,892 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #7c3aed;
+    --primary-dark: #6d28d9;
+    --primary-light: #a78bfa;
+    --background-dark: #f8f7ff;
+    --background-secondary: #ffffff;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --border-color: #e5e7eb;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --error-color: #ef4444;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --purple-50: #faf5ff;
+    --purple-100: #f3e8ff;
+    --purple-200: #e9d5ff;
+    --purple-300: #d8b4fe;
+    --purple-400: #c084fc;
+    --purple-500: #a855f7;
+    --purple-600: #9333ea;
+    --purple-700: #7e22ce;
+    --purple-800: #6b21a8;
+    --purple-900: #581c87;
+}
+
+/*TIPOGRAFIA E ESTILOS BASE*/
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    background-color: var(--background-dark);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+h2 {
+    color: var(--text-primary);
+    text-align: left;
+    margin-bottom: 28px;
+    font-size: 28px;
+}
+
+h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/*AUTENTICAÇÃO - LOGIN E CADASTRO*/
+
+.container-auth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8f7ff 0%, #faf5ff 50%, #f8f7ff 100%);
+    background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
+}
+
+.container-auth::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.caixa-auth {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    padding: 60px 48px 40px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 20px 60px rgba(124, 58, 237, 0.12), 0 0 1px rgba(124, 58, 237, 0.2);
+    border: 1px solid rgba(124, 58, 237, 0.15);
+    position: relative;
+    z-index: 1;
+}
+
+/*FORMULÁRIOS*/
+
+.grupo-form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="url"],
+textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background: #ffffff;
+    color: var(--text-primary);
+    outline: none;
+    font-size: 14px;
+    transition: var(--transition);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--text-secondary);
+}
+
+input:focus,
+textarea:focus {
+    background: #ffffff;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+}
+
+/*BOTÕES*/
+
+.botao {
+    width: 100%;
+    padding: 14px 24px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: #ffffff;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 24px;
+    font-size: 16px;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.botao::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    transition: left 0.3s ease;
+}
+
+.botao:hover::before {
+    left: 100%;
+}
+
+.botao:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(124, 58, 237, 0.3);
+}
+
+.botao:active {
+    transform: translateY(0);
+}
+
+.botao:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.botao-sair {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    padding: 8px 20px;
+    color: var(--primary-color);
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.botao-sair:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/*MENSAGENS*/
+
+.msg-erro {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, rgba(239, 68, 68, 0.04) 100%);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    padding: 14px 16px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #dc2626;
+}
+
+.texto-link {
+    color: var(--text-secondary);
+    margin-top: 20px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.texto-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.texto-link a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/*NAVBAR / HEADER*/
+
+.navbar {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.95) 100%);
+    backdrop-filter: blur(10px);
+    padding: 16px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.08);
+}
+
+.logo {
+    color: var(--primary-color);
+    font-size: 24px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-right: 30px;
+    transition: var(--transition);
+}
+
+.logo:hover {
+    text-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+}
+
+.controles-usuario {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.barra-busca {
+    position: relative;
+}
+
+.barra-busca input {
+    background: #f3f4f6;
+    border: 1px solid var(--border-color);
+    padding: 10px 16px;
+    width: 220px;
+    border-radius: 6px;
+    transition: var(--transition);
+    font-size: 14px;
+    color: var(--text-primary);
+}
+
+.barra-busca input:focus {
+    width: 300px;
+    background: #ffffff;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+}
+
+#nomeUsuarioDisplay {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    min-width: 100px;
+}
+
+/*VISUALIZAÇÃO PRINCIPAL*/
+
+.visualizacao-principal {
+    padding-bottom: 60px;
+    padding-top: 0;
+}
+
+.banner-hero {
+    height: 450px;
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    padding: 40px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-bottom: 40px;
+    box-shadow: inset 0 -150px 80px -20px var(--background-dark);
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 0 20px 40px;
+}
+
+.banner-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(124, 58, 237, 0.2) 0%, rgba(124, 58, 237, 0.4) 100%);
+    pointer-events: none;
+}
+
+.titulo-hero {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 16px;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    letter-spacing: -1px;
+    position: relative;
+    z-index: 1;
+}
+
+.desc-hero {
+    max-width: 600px;
+    font-size: 1.2rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    color: rgba(255, 255, 255, 0.95);
+    position: relative;
+    z-index: 1;
+}
+
+/*LINHAS DE LIVROS*/
+
+.linha {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 40px;
+}
+
+.linha h3 {
+    margin-bottom: 16px;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--primary-color);
+    display: inline-block;
+}
+
+.linha-posters {
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: auto;
+    padding: 20px 0;
+    gap: 16px;
+    scroll-behavior: smooth;
+}
+
+.linha-posters::-webkit-scrollbar {
+    height: 8px;
+}
+
+.linha-posters::-webkit-scrollbar-track {
+    background: rgba(124, 58, 237, 0.1);
+    border-radius: 4px;
+}
+
+.linha-posters::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+.linha-posters::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
+
+.linha-posters {
+    -ms-overflow-style: none;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) rgba(124, 58, 237, 0.1);
+}
+
+/*CARTÕES DE LIVROS*/
+
+.cartao-poster {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    min-width: 160px;
+    flex-shrink: 0;
+    transition: var(--transition);
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.15);
+}
+
+.poster-img {
+    width: 160px;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.cartao-poster:hover {
+    transform: scale(1.08) translateY(-8px);
+    z-index: 10;
+    box-shadow: 0 12px 30px rgba(124, 58, 237, 0.25);
+}
+
+.cartao-poster:hover .poster-img {
+    filter: brightness(0.8);
+}
+
+.poster-acoes {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 16px 12px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: stretch;
+    height: 100%;
+    gap: 8px;
+}
+
+.cartao-poster:hover .poster-acoes {
+    opacity: 1;
+}
+
+.botao-acao {
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 12px;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.btn-pegar {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: #ffffff;
+}
+
+.btn-pegar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(124, 58, 237, 0.3);
+}
+
+.btn-devolver {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: #ffffff;
+}
+
+.btn-devolver:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.3);
+}
+
+/*CARREGAMENTO */
+
+.loading {
+    text-align: center;
+    margin-top: 60px;
+    color: var(--text-secondary);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.loading::after {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    border: 3px solid rgba(124, 58, 237, 0.2);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.escondido {
+    display: none !important;
+}
+
+/*PAINEL ADMIN*/
+
+#telaAdmin {
+    background: var(--background-dark) !important;
+}
+
+#telaAdmin .caixa-auth {
+    max-width: 100%;
+    margin-bottom: 40px;
+}
+
+#telaAdmin table {
+    width: 100%;
+    text-align: left;
+    color: var(--text-secondary);
+    border-collapse: collapse;
+}
+
+#telaAdmin table thead {
+    background: rgba(124, 58, 237, 0.08);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+#telaAdmin table th {
+    padding: 14px 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 12px;
+    color: var(--text-primary);
+}
+
+#telaAdmin table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+#telaAdmin table tbody tr:hover {
+    background: rgba(124, 58, 237, 0.05);
+}
+
+#botaoVoltarLib {
+    width: auto;
+    margin-bottom: 20px;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+#botaoVoltarLib:hover {
+    background: rgba(124, 58, 237, 0.08);
+    border-color: var(--primary-color);
+}
+
+/*RESPONSIVIDADE*/
+
+@media (max-width: 1024px) {
+    .caixa-auth {
+        padding: 48px 40px 32px;
+    }
+
+    .titulo-hero {
+        font-size: 2.8rem;
+    }
+
+    .controles-usuario {
+        gap: 16px;
+    }
+
+    .barra-busca input {
+        width: 180px;
+    }
+
+    .barra-busca input:focus {
+        width: 240px;
+    }
+}
+
+@media (max-width: 768px) {
+    .caixa-auth {
+        padding: 40px 32px 28px;
+        max-width: 100%;
+    }
+
+    .navbar {
+        padding: 12px 16px;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .logo {
+        font-size: 20px;
+        margin-right: 16px;
+    }
+
+    .controles-usuario {
+        width: 100%;
+        gap: 12px;
+    }
+
+    .barra-busca input {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .barra-busca input:focus {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .banner-hero {
+        height: 300px;
+        padding: 30px 40px;
+        margin: 0 16px 30px;
+    }
+
+    .titulo-hero {
+        font-size: 2rem;
+        margin-bottom: 12px;
+    }
+
+    .desc-hero {
+        font-size: 1rem;
+    }
+
+    .linha {
+        margin-left: 16px;
+        margin-right: 16px;
+        margin-bottom: 30px;
+    }
+
+    .linha h3 {
+        font-size: 18px;
+    }
+
+    .cartao-poster {
+        min-width: 140px;
+    }
+
+    .poster-img {
+        width: 140px;
+        height: 210px;
+    }
+
+    .botao {
+        padding: 12px 20px;
+        font-size: 14px;
+        margin-top: 16px;
+    }
+
+    h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container-auth {
+        padding: 20px 16px;
+    }
+
+    .caixa-auth {
+        padding: 32px 24px 20px;
+        border-radius: 8px;
+    }
+
+    .navbar {
+        padding: 12px 12px;
+        gap: 8px;
+    }
+
+    .logo {
+        font-size: 18px;
+        margin-right: 12px;
+    }
+
+    .controles-usuario {
+        width: 100%;
+        gap: 8px;
+    }
+
+    #nomeUsuarioDisplay {
+        display: none;
+    }
+
+    .barra-busca input {
+        width: 100%;
+        max-width: 160px;
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .barra-busca input:focus {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .botao-sair {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .banner-hero {
+        height: 220px;
+        padding: 20px 24px;
+        margin: 0 12px 20px;
+        border-radius: 6px;
+    }
+
+    .titulo-hero {
+        font-size: 1.5rem;
+        margin-bottom: 8px;
+    }
+
+    .desc-hero {
+        font-size: 0.9rem;
+    }
+
+    .linha {
+        margin-left: 12px;
+        margin-right: 12px;
+        margin-bottom: 24px;
+    }
+
+    .linha h3 {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+
+    .linha-posters {
+        gap: 12px;
+        padding: 16px 0;
+    }
+
+    .cartao-poster {
+        min-width: 120px;
+    }
+
+    .poster-img {
+        width: 120px;
+        height: 180px;
+        border-radius: 6px;
+    }
+
+    .botao-acao {
+        padding: 8px 12px;
+        font-size: 11px;
+        border-radius: 4px;
+    }
+
+    .botao {
+        padding: 12px 16px;
+        font-size: 14px;
+        margin-top: 12px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="url"] {
+        padding: 12px 14px;
+        font-size: 16px;
+    }
+
+    .grupo-form {
+        margin-bottom: 16px;
+    }
+
+    h2 {
+        font-size: 20px;
+        margin-bottom: 16px;
+    }
+
+    .msg-erro {
+        padding: 12px 14px;
+        font-size: 13px;
+        margin-bottom: 16px;
+    }
+
+    .texto-link {
+        margin-top: 16px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 360px) {
+    .caixa-auth {
+        padding: 24px 16px 16px;
+    }
+
+    .titulo-hero {
+        font-size: 1.2rem;
+    }
+
+    .desc-hero {
+        font-size: 0.85rem;
+    }
+
+    .cartao-poster {
+        min-width: 100px;
+    }
+
+    .poster-img {
+        width: 100px;
+        height: 150px;
+    }
+
+    .botao {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+}
+
+/*ANIMAÇÕES*/
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cartao-poster {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* ACESSIBILIDADE */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* MODO CLARO (SUPORTE NATIVO) */
+
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: var(--background-dark);
+        color: var(--text-primary);
+    }
+}
